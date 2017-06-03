@@ -17,7 +17,7 @@ end
 
 
  topics = ["@ContactYourRep"]
- client.filter(track: topics.join(",")) do |object|
+ client.filter(track: topics) do |object|
    puts object.screen_name.to_s + " says " + object.text.to_s
    persons = Locate.lookup(object.text.to_s)
    response = object.user.screen_name.to_s + " Your reps are "
