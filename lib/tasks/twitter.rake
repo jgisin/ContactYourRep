@@ -18,12 +18,12 @@ end
  client.filter(track: topic) do |object|
    puts object.is_a?(Twitter::Tweet)
    puts object.user.screen_name.to_s + " says " + object.text.to_s
-#   persons = Locate.lookup(object.text.to_s)
-#   response = object.user.screen_name.to_s + " Your reps are "
+   persons = Locate.lookup(object.text.to_s)
+   response = object.user.screen_name.to_s + " Your reps are "
 #   persons.each_with_index do |p,index|
 #     response += "@" + p["twitter"] + " "
 #   end
-#   puts response
-#   client2.update(response)
+   puts response
+   client2.update(response)
  end
 end
