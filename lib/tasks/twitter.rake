@@ -16,13 +16,13 @@ end
 
  topic = "ContactYourRep"
  client.filter(track: topic) do |object|
-   puts object.is_a?(Twitter::Tweet)
-   puts object.user.screen_name.to_s + " says " + object.text.to_s
-   persons = Locate.lookup(object.text.to_s)
+   text = object.text.to_s.gsub("@ContactYourRep", "")
+   puts object.user.screen_name.to_s + " says " + text
+   persons = Locate.lookup(text)
    response = object.user.screen_name.to_s + " Your reps are "
-#   persons.each_with_index do |p,index|
-#     response += "@" + p["twitter"] + " "
-#   end
+   persons.each_with_index do |p,index|
+     response += "@" + p["twitter"] + " "
+   end
    puts response
    client2.update(response)
  end
