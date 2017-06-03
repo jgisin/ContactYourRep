@@ -14,7 +14,7 @@ class HomeController < ApplicationController
     offices = Array.new
     @persons = Array.new
     officials = Array.new
-    @response = HTTParty.get("https://www.googleapis.com/civicinfo/v2/representatives?key=AIzaSyCE4kP016XrAmixkE9iR7gHjOGJ9YeaX8Y&&levels=country&levels=administrativeArea1&address=" + address)
+    @response = HTTParty.get("https://www.googleapis.com/civicinfo/v2/representatives?key=" + ENV["GOOGLE_API_KEY"] + "&levels=country&levels=administrativeArea1&address=" + address)
     @response["offices"].each do |off|
       offices << off
     end
