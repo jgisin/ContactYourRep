@@ -3,6 +3,7 @@ class Locate
 offices = Array.new
 @persons = Array.new
 officials = Array.new
+puts "address: " + address
 @response = HTTParty.get("https://www.googleapis.com/civicinfo/v2/representatives?key=" + ENV["GOOGLE_API_KEY"] + "&levels=country&levels=administrativeArea1&address=" + address)
 @response["offices"].each do |off|
   offices << off
