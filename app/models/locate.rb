@@ -5,6 +5,7 @@ offices = Array.new
 officials = Array.new
 puts "address: " + address
 @response = HTTParty.get("https://www.googleapis.com/civicinfo/v2/representatives?key=" + ENV["GOOGLE_API_KEY"] + "&levels=country&levels=administrativeArea1&address=" + address)
+if !@response["offices"].nil?
 @response["offices"].each do |off|
   offices << off
 end
@@ -29,5 +30,7 @@ offices.each do |o|
   end
 end
 return @persons
+end
+return ""
 end
 end
