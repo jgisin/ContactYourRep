@@ -7,7 +7,23 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
     <title>Contact Your Rep</title>
-    <style>
+    <script>window.twttr = (function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0],
+    t = window.twttr || {};
+  if (d.getElementById(id)) return t;
+  js = d.createElement(s);
+  js.id = id;
+  js.src = "https://platform.twitter.com/widgets.js";
+  fjs.parentNode.insertBefore(js, fjs);
+
+  t._e = [];
+  t.ready = function(f) {
+    t._e.push(f);
+  };
+
+  return t;
+}(document, "script", "twitter-wjs"));</script>
+  <!--  <style>
       *, *:before, *:after {
         -webkit-box-sizing: border-box;
         -moz-box-sizing: border-box;
@@ -101,10 +117,42 @@
         background-color: white;
       }
 
-    </style>
+    </style> -->
   </head>
 
   <body>
     <%= yield %>
+    <footer class="footer-distributed">
+
+    <div class="footer-left">
+
+
+      <p class="footer-company-name">Chad Stachowicz &copy; 2017</p>
+
+      <div class="footer-icons">
+
+        <a href="https://www.facebook.com/chadstachowicz"><i class="fa fa-facebook"></i></a>
+        <a href="https://www.twitter.com/chadstachowicz"><i class="fa fa-twitter"></i></a>
+
+      </div>
+
+    </div>
+
+    <div class="footer-right">
+
+  <!--    <p>Contact Us</p>
+
+      <form action="#" method="post">
+
+        <input type="text" name="email" placeholder="Email" />
+        <textarea name="message" placeholder="Message"></textarea>
+        <button>Send</button>
+
+      </form> -->
+
+    </div>
+
+  </footer>
+
   </body>
 </html>

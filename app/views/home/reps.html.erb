@@ -1,9 +1,31 @@
-<h1>Find your representative to give them a call or send them a piece of actual mail!</h1>
 
-<form action="/reps" method="post">
-  Address: <input type="text" name="address"><br>
-  City: <input type="text" name="city"><br>
-  State: <input type="text" name="state"><br>
-  Zip: <input type="text" name="zip"><br>
-  <input type="submit" value="Submit">
-</form>
+<div class="container">
+  <br/><br/>
+<h1>Federal Representatives</h1><br/><br/>
+<%@persons.each_with_index do |p,index|%>
+<%if index==5%>
+<h1>State Representatives</h1><br/><br/>
+<% end %>
+<div class="row">
+  <div class="col-md-3">
+<img width="200px" src='<%=p["photo"]%>'></img>
+</div><div class="col-md-5">
+
+<h3><%=p["name"]%></h3>
+<h4><%=p["office"]%></h4>
+<h5>Phone: <a href="tel:+1<%=p["phone"].delete("( )\t").gsub('-', '')%>"><%=p["phone"]%></a></h5>
+<% if !p["twitter"].empty? %>
+<h5>Twitter: <a href="https://twitter.com/<%=p["twitter"]%>">@<%=p["twitter"]%></a></h5>
+<% end %>
+<button class="btn btn-success">Write a letter!</button>
+</div><div class="col-md-4">
+  <% if !p["twitter"].empty? %><a class="twitter-timeline"
+  href="https://twitter.com/<%=p["twitter"]%>"
+  data-width="400"
+  data-height="400">
+Tweets by @<%=p["twitter"]%>
+</a><% end %></div>
+</div><br/>
+<hr/>
+<% end %>
+</div>
