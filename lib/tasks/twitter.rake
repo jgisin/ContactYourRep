@@ -14,8 +14,8 @@ client2 = Twitter::REST::Client.new do |config|
 end
 
 
- topics = ["@ContactYourRep"]
- client.filter(track: topics) do |object|
+ topic = "@ContactYourRep"
+ client.filter(track: topic) do |object|
    puts object.screen_name.to_s + " says " + object.text.to_s
    persons = Locate.lookup(object.text.to_s)
    response = object.user.screen_name.to_s + " Your reps are "
