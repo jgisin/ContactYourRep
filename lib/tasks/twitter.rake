@@ -9,11 +9,13 @@ task :twitter => :environment do
 
  topics = ["@ContactYourRep"]
  client.filter(track: topics.join(",")) do |object|
+   puts object.screen_name.to_s + " says " object.text.to_s
    persons = Locate.lookup(object.text.to_s)
-   response = object.user.screen_name + " Your reps are "
+   response = object.user.screen_name.to_s + " Your reps are "
    persons.each_with_index do |p,index|
      response += "@" + p["twitter"] + " "
    end
+   puts response
    client.update(response)
  end
 end
