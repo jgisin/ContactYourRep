@@ -19,11 +19,13 @@ end
    text = object.text.to_s.gsub("@ContactYourRep", "")
    puts object.user.screen_name.to_s + " says " + text
    persons = Locate.lookup(text)
-   response = "@" + object.user.screen_name.to_s + " Your reps are "
-   persons.each_with_index do |p,index|
-     response += "@" + p["twitter"] + " "
+   if !persons.nil?
+     response = "@" + object.user.screen_name.to_s + " Your reps are "
+     persons.each_with_index do |p,index|
+       response += "@" + p["twitter"] + " "
+     end
+     puts response
+     client2.update(response)
    end
-   puts response
-   client2.update(response)
  end
 end
