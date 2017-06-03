@@ -21,11 +21,13 @@ end
    persons = Locate.lookup(text)
    if !persons.nil?
      response = "@" + object.user.screen_name.to_s + " Your reps are "
+     if persons != ""
      persons.each_with_index do |p,index|
        response += "@" + p["twitter"] + " "
      end
      puts response
      client2.update(response)
+   end
    end
  end
 end
