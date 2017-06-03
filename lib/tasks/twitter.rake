@@ -9,7 +9,7 @@ task :twitter => :environment do
 
  topics = ["@ContactYourRep"]
  client.filter(track: topics.join(",")) do |object|
-   puts object.screen_name.to_s + " says " object.text.to_s
+   puts object.screen_name.to_s + " says " + object.text.to_s
    persons = Locate.lookup(object.text.to_s)
    response = object.user.screen_name.to_s + " Your reps are "
    persons.each_with_index do |p,index|
